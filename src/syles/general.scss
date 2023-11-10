@@ -22,3 +22,15 @@ menu {
 body {
     font-family:Arial, Helvetica, sans-serif
 }
+
+/*****LAYOUT******/
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}

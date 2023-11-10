@@ -20,8 +20,7 @@ export default {
 
 </template>
 
-<style>
-
+<style scoped>
 .page-header{
     display: flex;
     justify-content: space-around;
