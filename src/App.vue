@@ -11,7 +11,6 @@ export default {
   data() {
     return {  
       apikey : '44897644ab70bb16103179e4e3e203dd',
-      queryUser : 'lo hobbit',
       store: store,
     }
   },
@@ -20,13 +19,13 @@ export default {
       axios.get('https://api.themoviedb.org/3/search/movie',{
         params: {
           api_key : this.apikey,
-          query : this.queryUser
+          query : this.store.query
         }
       })
       .then(res => {
         const filmsObject = res.data.results;
         this.store.films = filmsObject
-        // console.log(this.store.films)
+        console.log(this.store.films)
         this.store.isSearched = true
       })
     }

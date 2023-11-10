@@ -17,18 +17,18 @@ import {store} from '../store'
 <template>
     <div class="col-2" v-if="store.isSearched === true">
         <div class="card">
-            <ul class="info">
-                <li>{{filmitem.original_title }}</li>
-                <li>Titolo originale</li>
-                <li>Lingua</li>
-                <li>Voto</li>
+            <ul class="infos">
+                <li> <span class="info">Titolo:</span> {{filmitem.title }}</li>
+                <li> <span class="info">Titolo originale:</span> {{ filmitem.original_title }}</li>
+                <li> <span class="info">Lingua:</span> {{ filmitem.original_language  }}</li>
+                <li> <span class="info">Votazione:</span> {{ filmitem.vote_average }}</li>
             </ul>
         </div>
     </div>
 
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
     .col-2 {
     flex-basis: calc((100% / 12) * 2); 
     padding: 10px; 
@@ -38,11 +38,15 @@ import {store} from '../store'
         background-color: azure;
     }
 
-    .info {
+    .infos {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        .info {
+            color: red ;
+        }
     }
 
 </style>

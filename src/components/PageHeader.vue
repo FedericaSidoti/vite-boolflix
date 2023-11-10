@@ -1,10 +1,11 @@
 <script>
+import {store} from '../store'
 export default {
     components: {
     },
     data() {
         return {
-            
+            store: store
         }
     },
     methods: {
@@ -21,7 +22,10 @@ export default {
         <h2>BOOLFLIX</h2>
     </div>
     <div class="input-wrap">
-        <input type="text" placeholder="Cerca...">
+        <input 
+        type="text" 
+        placeholder="Cerca..."
+        v-model="store.query">
         <button @click="triggerSearch">CERCA</button>
     </div>
     </header>
