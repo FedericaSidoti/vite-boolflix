@@ -1,19 +1,20 @@
 <script>
+import {store} from '../store'
     export default {
         components: {
         },
         data() {
             return {
-                
+                store: store,
             }
         }
     }
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" v-if="store.isSearched === true">
         <ul class="info">
-            <li>titolo</li>
+            <li>{{store.films.results[0].original_title }}</li>
             <li>Titolo originale</li>
             <li>Lingua</li>
             <li>Voto</li>

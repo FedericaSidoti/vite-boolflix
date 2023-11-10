@@ -2,6 +2,7 @@
 import PageHeader from './components/PageHeader.vue';
 import PageMain from './components/PageMain.vue';
 import axios from 'axios'
+import {store} from './store'
 export default {
   components: {
     PageHeader,
@@ -10,7 +11,8 @@ export default {
   data() {
     return {  
       apikey : '44897644ab70bb16103179e4e3e203dd',
-      queryUser : 'le due torri'
+      queryUser : 'le due torri',
+      store: store,
     }
   },
   methods : {
@@ -22,7 +24,10 @@ export default {
         }
       })
       .then(res => {
-        console.log(res.data)
+        const filmsObject = res.data;
+        this.store.films = filmsObject
+        // console.log(this.store.films)
+        this.store.isSearched = true
       })
     }
   }  
