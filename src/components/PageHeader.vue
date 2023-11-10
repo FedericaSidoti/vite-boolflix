@@ -27,11 +27,11 @@ export default {
     justify-content: space-around;
     align-items: center;
     background-color: black;
+    padding: 20px;
 }
 
 .logo-wrap {
     color: #E50914;
-    font-weight: bold;
 }
 
 </style>

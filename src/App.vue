@@ -13,6 +13,7 @@ export default {
   <PageHeader/>
 </template>
 
-<style scoped>
+<style lang="scss">
+@use './syles/general.scss'
 
 </style>
