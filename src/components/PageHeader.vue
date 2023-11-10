@@ -10,7 +10,8 @@ export default {
     },
     methods: {
         triggerSearch() {
-            this.$emit('doSearch')
+            this.$emit('doSearchFilm')
+            this.$emit('doSearchSeries')
         }   
     }
 }

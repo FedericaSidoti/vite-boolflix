@@ -9,7 +9,8 @@ import {store} from '../store'
             }
         },
         props : {
-            filmitem : Object
+            filmitem : Object,
+            serieitem : Object,
         },
         computed : {
             language : function(){
@@ -28,22 +29,24 @@ import {store} from '../store'
 </script>
 
 <template>
-    <div class="col-2" v-if="store.isSearched === true">
+    <div class="col-2" >
         <div class="card">
             <ul class="infos">
                 <li class="info"> 
                     <p class="info-title">Titolo:</p> 
-                    <p>{{filmitem.title }}</p>
+                    <p v-if="store.isSearched === true">{{filmitem.title }}</p>
                 </li>
                 <li class="info"> 
                     <p class="info-title">Titolo originale:</p> 
                     <p>{{ filmitem.original_title }}</p>
                 </li>
                 <li class="info"> 
-                    <p class="info-title">Lingua: </p>
-                    <p v-if="language===null">{{ filmitem.original_language }}</p>
-                    <div v-else class="icon-wrap">
-                        <img :src='this.language'>
+                    <div class="info-title lang">Lingua: 
+                        <p> {{ filmitem.original_language }}</p>
+                        <div class="icon-wrap">
+                            <img v-if="language !== null" :src='this.language'>
+                            <img v-else src="/img/backup-flag.png">
+                        </div>
                     </div>
                 </li>
                 <li class="info"> 
@@ -80,14 +83,18 @@ import {store} from '../store'
 
         .info {
             display: flex;
-            align-items: center;
             margin-bottom: 5px; 
         }
     }
 
+    .lang {
+        display: flex;
+        align-items: center
+    }
+
 
     img {
-            width: 30px; 
+            width: 20px; 
         }
 
 </style>

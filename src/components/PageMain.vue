@@ -33,6 +33,8 @@ export default {
             </div>
             <div class="row">
                 <!-- <PageCard
+                v-for="serie in store.series"
+                :serieitem = 'serie'
                 class="col-2"/> -->
             </div>
         </section>

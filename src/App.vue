@@ -12,30 +12,63 @@ export default {
     return {  
       apikey : '44897644ab70bb16103179e4e3e203dd',
       store: store,
+      filmsURL: 'https://api.themoviedb.org/3/search/movie',
+      seriesURL: 'https://api.themoviedb.org/3/search/tv'
     }
   },
   methods : {
-    search(){
-      axios.get('https://api.themoviedb.org/3/search/movie',{
+
+    // search(url,) {
+    //   axios.get(url,{
+    //     params: {
+    //       api_key : this.apikey,
+    //       query : this.store.query
+    //     }
+    //   })
+    //   .then(res => {
+    //     const items = res.data.results
+    //     this.store.films = items
+    //     // console.log(this.store.films)
+    //     this.store.isSearched = true
+    //   })
+    // },
+    searchFilms() {
+      axios.get(this.filmsURL,{
         params: {
           api_key : this.apikey,
-          query : this.store.query
+          query : this.store.query,
         }
       })
       .then(res => {
-        const filmsObject = res.data.results;
-        this.store.films = filmsObject
-        console.log(this.store.films)
-        this.store.isSearched = true
+        const items = res.data.results
+        this.store.films = items
+        // console.log(this.store.films)
+        this.store.isSearchedFilm = true
+      })
+    },
+    searchSeries() {
+      axios.get(this.seriesURL,{
+        params: {
+          api_key : this.apikey,
+          query : this.store.query,
+        }
+      })
+      .then(res => {
+        const items = res.data.results
+        this.store.series = items
+        console.log(this.store.series)
+        this.store.isSearchedSeries = true
       })
     }
+
   }  
 }
 </script>
 
 <template>
   <PageHeader
-  @doSearch="search"/>
+  @doSearchFilm="searchFilms()"
+  @doSearchSeries="searchSeries()"/>
   <PageMain/>
 </template>
 
