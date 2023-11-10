@@ -31,13 +31,25 @@ import {store} from '../store'
     <div class="col-2" v-if="store.isSearched === true">
         <div class="card">
             <ul class="infos">
-                <li> <span class="info">Titolo:</span> {{filmitem.title }}</li>
-                <li> <span class="info">Titolo originale:</span> {{ filmitem.original_title }}</li>
-                <li> <span class="info">Lingua:</span>
-                    <p v-if="language===null">{{ filmitem.original_language }}</p>
-                    <img v-else :src='language'>
+                <li class="info"> 
+                    <p class="info-title">Titolo:</p> 
+                    <p>{{filmitem.title }}</p>
                 </li>
-                <li> <span class="info">Votazione:</span> {{ filmitem.vote_average }}</li>
+                <li class="info"> 
+                    <p class="info-title">Titolo originale:</p> 
+                    <p>{{ filmitem.original_title }}</p>
+                </li>
+                <li class="info"> 
+                    <p class="info-title">Lingua: </p>
+                    <p v-if="language===null">{{ filmitem.original_language }}</p>
+                    <div v-else class="icon-wrap">
+                        <img :src='this.language'>
+                    </div>
+                </li>
+                <li class="info"> 
+                    <p class="info-title">Votazione:</p> 
+                    <p>{{ filmitem.vote_average }}</p>
+                </li>
             </ul>
         </div>
     </div>
@@ -59,11 +71,20 @@ import {store} from '../store'
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-size: 14px;
+
+        .info-title {
+            font-weight: bold ;
+            display: flex;
+        }
 
         .info {
-            font-weight: bold ;
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px; 
         }
     }
+
 
     img {
             width: 30px; 
