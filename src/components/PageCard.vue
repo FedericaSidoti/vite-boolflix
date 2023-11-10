@@ -10,6 +10,19 @@ import {store} from '../store'
         },
         props : {
             filmitem : Object
+        },
+        computed : {
+            language : function(){
+                if (this.filmitem.original_language === 'it') {
+                    return '/img/italian-flag.png'
+                } else if (this.filmitem.original_language === 'en'){
+                    return '/img/uk-flag-icon-png.png'
+                }else if (this.filmitem.original_language === 'fr'){
+                    return '/img/french-flag-png.png'
+                } else {
+                    return null
+                }
+            }
         }
     }
 </script>
@@ -20,7 +33,10 @@ import {store} from '../store'
             <ul class="infos">
                 <li> <span class="info">Titolo:</span> {{filmitem.title }}</li>
                 <li> <span class="info">Titolo originale:</span> {{ filmitem.original_title }}</li>
-                <li> <span class="info">Lingua:</span> {{ filmitem.original_language  }}</li>
+                <li> <span class="info">Lingua:</span>
+                    <p v-if="language===null">{{ filmitem.original_language }}</p>
+                    <img v-else :src='language'>
+                </li>
                 <li> <span class="info">Votazione:</span> {{ filmitem.vote_average }}</li>
             </ul>
         </div>
@@ -45,8 +61,12 @@ import {store} from '../store'
         justify-content: center;
 
         .info {
-            color: red ;
+            font-weight: bold ;
         }
     }
+
+    img {
+            width: 30px; 
+        }
 
 </style>
