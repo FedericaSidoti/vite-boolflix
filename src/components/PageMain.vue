@@ -1,12 +1,13 @@
 <script>
 import PageCard from './PageCard.vue'
+import {store} from '../store'
 export default {
     components: {
         PageCard
     },
     data() {
         return {
-            
+            store: store
         }
     },
 }
@@ -21,6 +22,8 @@ export default {
                 </div>
                 <div class="row">
                     <PageCard
+                    v-for="film in store.films"
+                    :filmitem = 'film'
                     class="col-2"/>
                 </div>
         </section>
@@ -29,8 +32,8 @@ export default {
                 <h2>Serie TV</h2>
             </div>
             <div class="row">
-                <PageCard
-                class="col-2"/>
+                <!-- <PageCard
+                class="col-2"/> -->
             </div>
         </section>
         </div>
@@ -48,9 +51,5 @@ export default {
     padding: 20px;
 }
 
-.col-2 {
-    flex-basis: calc((100% / 12) * 2);
-    padding: 5px; 
-}
 
 </style>

@@ -11,7 +11,7 @@ export default {
   data() {
     return {  
       apikey : '44897644ab70bb16103179e4e3e203dd',
-      queryUser : 'le due torri',
+      queryUser : 'lo hobbit',
       store: store,
     }
   },
@@ -24,7 +24,7 @@ export default {
         }
       })
       .then(res => {
-        const filmsObject = res.data;
+        const filmsObject = res.data.results;
         this.store.films = filmsObject
         // console.log(this.store.films)
         this.store.isSearched = true
