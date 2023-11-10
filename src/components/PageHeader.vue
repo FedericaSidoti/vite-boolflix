@@ -3,6 +3,14 @@ export default {
     components: {
     },
     data() {
+        return {
+            
+        }
+    },
+    methods: {
+        triggerSearch() {
+            this.$emit('doSearch')
+        }   
     }
 }
 </script>
@@ -14,7 +22,7 @@ export default {
     </div>
     <div class="input-wrap">
         <input type="text" placeholder="Cerca...">
-        <button>CERCA</button>
+        <button @click="triggerSearch">CERCA</button>
     </div>
     </header>
 

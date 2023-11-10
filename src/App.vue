@@ -7,12 +7,21 @@ export default {
     PageMain,
   },
   data() {
-  }
+    return {
+      
+    }
+  },
+  methods : {
+    search(){
+      console.log('ho cercato')
+    }
+  }  
 }
 </script>
 
 <template>
-  <PageHeader/>
+  <PageHeader
+  @doSearch="search"/>
   <PageMain/>
 </template>
 

@@ -3,19 +3,22 @@
         components: {
         },
         data() {
+            return {
+                
+            }
         }
     }
 </script>
 
 <template>
-    <card class="card">
+    <div class="card">
         <ul class="info">
             <li>titolo</li>
             <li>Titolo originale</li>
             <li>Lingua</li>
             <li>Voto</li>
         </ul>
-    </card>
+    </div>
 
 </template>
 

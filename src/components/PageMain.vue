@@ -5,7 +5,10 @@ export default {
         PageCard
     },
     data() {
-    }
+        return {
+            
+        }
+    },
 }
 </script>
 
