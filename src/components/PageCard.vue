@@ -9,16 +9,15 @@ import {store} from '../store'
             }
         },
         props : {
-            filmitem : Object,
-            serieitem : Object,
+            item : Object,
         },
         computed : {
             language : function(){
-                if (this.filmitem.original_language === 'it') {
+                if (this.item.original_language === 'it') {
                     return '/img/italian-flag.png'
-                } else if (this.filmitem.original_language === 'en'){
+                } else if (this.item.original_language === 'en'){
                     return '/img/uk-flag-icon-png.png'
-                }else if (this.filmitem.original_language === 'fr'){
+                }else if (this.item.original_language === 'fr'){
                     return '/img/french-flag-png.png'
                 } else {
                     return null
@@ -34,15 +33,16 @@ import {store} from '../store'
             <ul class="infos">
                 <li class="info"> 
                     <p class="info-title">Titolo:</p> 
-                    <p v-if="store.isSearched === true">{{filmitem.title }}</p>
+                    <p v-if="store.isSearchedFilm === true && item.title">{{item.title }}</p>
+                    <p v-else>{{ item.name }}</p>
                 </li>
                 <li class="info"> 
                     <p class="info-title">Titolo originale:</p> 
-                    <p>{{ filmitem.original_title }}</p>
+                    <p>{{ item.original_title }}</p>
                 </li>
                 <li class="info"> 
                     <div class="info-title lang">Lingua: 
-                        <p> {{ filmitem.original_language }}</p>
+                        <p> {{ item.original_language }}</p>
                         <div class="icon-wrap">
                             <img v-if="language !== null" :src='this.language'>
                             <img v-else src="/img/backup-flag.png">
@@ -51,7 +51,7 @@ import {store} from '../store'
                 </li>
                 <li class="info"> 
                     <p class="info-title">Votazione:</p> 
-                    <p>{{ filmitem.vote_average }}</p>
+                    <p>{{ item.vote_average }}</p>
                 </li>
             </ul>
         </div>
