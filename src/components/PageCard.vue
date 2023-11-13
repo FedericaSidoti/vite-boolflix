@@ -13,7 +13,7 @@ import {store} from '../store'
         },
         computed : {
             language : function(){
-                if (this.item.original_language === 'it') {
+                if ( this.item.original_language=== 'it') {
                     return '/img/italian-flag.png'
                 } else if (this.item.original_language === 'en'){
                     return '/img/uk-flag-icon-png.png'
@@ -22,6 +22,12 @@ import {store} from '../store'
                 } else {
                     return null
                 }
+            },
+            stars : function(){
+                const voteAverage = parseInt(this.item.vote_average)
+                const voteInFive = (voteAverage * 5)/10
+                const voteParsed= parseInt(voteInFive)
+                return voteParsed
             }
         }
     }
@@ -47,14 +53,17 @@ import {store} from '../store'
                     <div class="info-title lang">Lingua: 
                         <p> {{ item.original_language }}</p>
                         <div class="icon-wrap">
-                            <img v-if="language !== null" :src='this.language'>
+                            <img v-if="language !== null" :src='language'>
                             <img v-else src="/img/backup-flag.png">
                         </div>
                     </div>
                 </li>
                 <li class="info"> 
                     <p class="info-title">Votazione: 
-                    <span>{{ item.vote_average }} </span>
+                        <span class="stars" v-if="stars !== 0" > 
+                            <span v-for="star in stars">&#10030;</span>
+                        </span>
+                        <span v-else> &#128533; </span> 
                     </p>
                 </li>
             </ul>
@@ -99,5 +108,9 @@ import {store} from '../store'
     img {
             width: 20px; 
         }
+
+    .stars{
+        color: yellow
+    }
 
 </style>
