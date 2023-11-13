@@ -10,6 +10,7 @@ export default {
     },
     methods: {
         triggerSearch() {
+            store.callResults = {};
             const controlSpace = this.store.query.trim()
             console.log(controlSpace)
             if (controlSpace !== '') {
