@@ -7,6 +7,11 @@ import {store} from '../store'
             return {
                 store: store,
                 src: 'https://image.tmdb.org/t/p/w342' + this.item.poster_path,
+                languagesArray: [
+                    'it',
+                    'en',
+                    'fr'
+                ]
             }
         },
         props : {
@@ -14,20 +19,15 @@ import {store} from '../store'
         },
         computed : {
             language : function(){
-                if ( this.item.original_language=== 'it') {
-                    return '/img/italian-flag.png'
-                } else if (this.item.original_language === 'en'){
-                    return '/img/uk-flag-icon-png.png'
-                }else if (this.item.original_language === 'fr'){
-                    return '/img/french-flag-png.png'
-                } else {
-                    return null
-                }
+
+                const srcFlag = '/img/' + this.item.original_language + '.png'
+                
+                return srcFlag
             },
             stars : function(){
                 const voteAverage = Math.round(this.item.vote_average)
                 const voteInFive = (voteAverage * 5)/10 
-                const voteParsed= Math.ceil(voteInFive)
+                const voteParsed = Math.ceil(voteInFive)
                 return voteParsed
             }
         }
@@ -58,7 +58,7 @@ import {store} from '../store'
                     <div class="info-title lang">Lingua: 
                         <p> {{ item.original_language }}</p>
                         <div class="icon-wrap">
-                            <img class="flag" v-if="language !== null" :src='language'>
+                            <img class="flag" v-if="languagesArray.includes(item.original_language)" :src='language'>
                             <img class="flag" v-else src="/img/backup-flag.png">
                         </div>
                     </div>
@@ -88,7 +88,7 @@ import {store} from '../store'
     width: calc((100% / 12) * 2); 
     padding: 5px; 
     position: relative;
-    overflow: auto;
+    overflow: auto; 
 }
     .col-2:hover .back {
         display: inline-block;
@@ -100,8 +100,10 @@ import {store} from '../store'
         top: 0;
         right: 0; 
         left: 0; 
+        bottom: 0; 
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
+        overflow: auto; 
     }
 
     .infos {
@@ -111,6 +113,7 @@ import {store} from '../store'
         justify-content: center;
         font-size: 14px;
         font-weight: bold;
+        overflow: auto; 
 
         span {
             font-weight: normal ;
