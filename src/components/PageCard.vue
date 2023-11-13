@@ -26,7 +26,7 @@ import {store} from '../store'
                 return srcFlag
             },
             stars : function(){
-                const voteAverage = Math.round(this.item.vote_average)
+                const voteAverage = Math.ceil(this.item.vote_average)
                 const voteInFive = (voteAverage * 5)/10 
                 const voteParsed = Math.ceil(voteInFive)
                 return voteParsed
