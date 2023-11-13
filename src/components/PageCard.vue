@@ -25,9 +25,9 @@ import {store} from '../store'
                 }
             },
             stars : function(){
-                const voteAverage = parseInt(this.item.vote_average)
-                const voteInFive = (voteAverage * 5)/10
-                const voteParsed= parseInt(voteInFive)
+                const voteAverage = Math.round(this.item.vote_average)
+                const voteInFive = (voteAverage * 5)/10 
+                const voteParsed= Math.ceil(voteInFive)
                 return voteParsed
             }
         }
