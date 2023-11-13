@@ -36,7 +36,7 @@ export default {
 <style scoped>
 .page-header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: black;
     padding: 20px;

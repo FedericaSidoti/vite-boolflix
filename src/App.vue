@@ -41,9 +41,10 @@ export default {
       })
       .then(res => {
         const items = res.data.results
-        this.store.results.films = items
+        this.store.callResults.films = items
         console.log(this.store)
         this.store.isSearched = true
+        console.log(this.store.isSearched)
       })
     },
     searchSeries() {
@@ -55,7 +56,7 @@ export default {
       })
       .then(res => {
         const items = res.data.results
-        this.store.results.series = items
+        this.store.callResults.series = items
         console.log(this.store)
         this.store.isSearched = true
       })

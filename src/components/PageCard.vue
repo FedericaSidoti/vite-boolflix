@@ -30,15 +30,18 @@ import {store} from '../store'
 <template>
     <div class="col-2" >
         <div class="card">
-            <ul class="infos">
-                <li class="info"> 
-                    <p class="info-title">Titolo:</p> 
-                    <p v-if="store.isSearchedFilm === true && item.title">{{item.title }}</p>
-                    <p v-else>{{ item.name }}</p>
+            <ul v-if="store.isSearched===true" class="infos">
+                <li class="info">
+                    <p class="info-title">Titolo:
+                    <span  v-if="item.title" >{{item.title }}</span>
+                    <span v-else>{{ item.name }} </span>
+                    </p>
                 </li>
                 <li class="info"> 
-                    <p class="info-title">Titolo originale:</p> 
-                    <p>{{ item.original_title }}</p>
+                    <p class="info-title">Titolo originale: 
+                    <span v-if="item.original_title">{{ item.original_title }} </span>
+                    <span v-else>{{ item.original_name }}</span>
+                    </p>
                 </li>
                 <li class="info"> 
                     <div class="info-title lang">Lingua: 
@@ -50,8 +53,9 @@ import {store} from '../store'
                     </div>
                 </li>
                 <li class="info"> 
-                    <p class="info-title">Votazione:</p> 
-                    <p>{{ item.vote_average }}</p>
+                    <p class="info-title">Votazione: 
+                    <span>{{ item.vote_average }} </span>
+                    </p>
                 </li>
             </ul>
         </div>
@@ -61,8 +65,8 @@ import {store} from '../store'
 
 <style lang="scss" scoped>
     .col-2 {
-    flex-basis: calc((100% / 12) * 2); 
-    padding: 10px; 
+    width: calc((100% / 12) * 2); 
+    padding: 5px; 
 }
     .card {
         padding: 10px;
@@ -75,14 +79,13 @@ import {store} from '../store'
         align-items: center;
         justify-content: center;
         font-size: 14px;
+        font-weight: bold;
 
-        .info-title {
-            font-weight: bold ;
-            display: flex;
+        span {
+            font-weight: normal ;
         }
 
         .info {
-            display: flex;
             margin-bottom: 5px; 
         }
     }

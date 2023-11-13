@@ -22,7 +22,7 @@ export default {
                 </div>
                 <div class="row">
                     <PageCard
-                    v-for="film in store.results.films"
+                    v-for="film in store.callResults.films"
                     :item = 'film'
                     class="col-2"/>
                 </div>
@@ -33,7 +33,7 @@ export default {
             </div>
             <div class="row">
                 <PageCard
-                v-for="serie in store.results.series"
+                v-for="serie in store.callResults.series"
                 :item = 'serie'
                 class="col-2"/>
             </div>
