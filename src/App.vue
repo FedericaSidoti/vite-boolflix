@@ -17,21 +17,6 @@ export default {
     }
   },
   methods : {
-
-    // search(url,) {
-    //   axios.get(url,{
-    //     params: {
-    //       api_key : this.apikey,
-    //       query : this.store.query
-    //     }
-    //   })
-    //   .then(res => {
-    //     const items = res.data.results
-    //     this.store.films = items
-    //     // console.log(this.store.films)
-    //     this.store.isSearched = true
-    //   })
-    // },
     searchFilms() {
       axios.get(this.filmsURL,{
         params: {
@@ -42,9 +27,9 @@ export default {
       .then(res => {
         const items = res.data.results
         this.store.callResults.films = items
-        console.log(this.store)
+        // console.log(this.store)
         this.store.isSearched = true
-        console.log(this.store.isSearched)
+        // console.log(this.store.isSearched)
       })
     },
     searchSeries() {
@@ -57,7 +42,7 @@ export default {
       .then(res => {
         const items = res.data.results
         this.store.callResults.series = items
-        console.log(this.store)
+        // console.log(this.store)
         this.store.isSearched = true
       })
     }

@@ -6,6 +6,7 @@ import {store} from '../store'
         data() {
             return {
                 store: store,
+                src: 'https://image.tmdb.org/t/p/w342',
             }
         },
         props : {
@@ -35,7 +36,10 @@ import {store} from '../store'
 
 <template>
     <div class="col-2" >
-        <div class="card">
+        <div class="card front">
+            <img :src="src + item.poster_path" >
+        </div>
+        <div class="card back">
             <ul v-if="store.isSearched===true" class="infos">
                 <li class="info">
                     <p class="info-title">Titolo:
@@ -53,8 +57,8 @@ import {store} from '../store'
                     <div class="info-title lang">Lingua: 
                         <p> {{ item.original_language }}</p>
                         <div class="icon-wrap">
-                            <img v-if="language !== null" :src='language'>
-                            <img v-else src="/img/backup-flag.png">
+                            <img class="flag" v-if="language !== null" :src='language'>
+                            <img class="flag" v-else src="/img/backup-flag.png">
                         </div>
                     </div>
                 </li>
@@ -76,10 +80,20 @@ import {store} from '../store'
     .col-2 {
     width: calc((100% / 12) * 2); 
     padding: 5px; 
+    position: relative;
 }
+    .col-2:hover .back {
+        display: inline-block;
+    }
     .card {
-        padding: 10px;
         background-color: azure;
+    }
+
+    .back{
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0; 
     }
 
     .infos {
@@ -105,7 +119,7 @@ import {store} from '../store'
     }
 
 
-    img {
+    .flag {
             width: 20px; 
         }
 
