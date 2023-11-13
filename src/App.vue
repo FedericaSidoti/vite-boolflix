@@ -13,27 +13,33 @@ export default {
       apikey : '44897644ab70bb16103179e4e3e203dd',
       store: store,
       filmsURL: 'https://api.themoviedb.org/3/search/movie',
-      seriesURL: 'https://api.themoviedb.org/3/search/tv'
+      seriesURL: 'https://api.themoviedb.org/3/search/tv',
     }
   },
   methods : {
     searchFilms() {
-      axios.get(this.filmsURL,{
-        params: {
-          api_key : this.apikey,
-          query : this.store.query,
-        }
-      })
-      .then(res => {
-        const items = res.data.results
-        this.store.callResults.films = items
-        console.log(this.store)
-        this.store.isSearched = true
+      if (this.store.query !== '') {
+        axios.get(this.filmsURL,{
+          params: {
+            api_key : this.apikey,
+            query : this.store.query,
+          }
+        })
+        .then(res => {
+          const items = res.data.results
+          this.store.callResults.films= items
+          console.log(this.store)
+          this.store.isSearched = true
         // console.log(this.store.isSearched)
-      })
+          if (this.store.callResults.films.length === 0) {
+            store.filmNotFound = true;
+          }
+        })
+      }
     },
     searchSeries() {
-      axios.get(this.seriesURL,{
+      if (this.store.query !== '') {
+        axios.get(this.seriesURL,{
         params: {
           api_key : this.apikey,
           query : this.store.query,
@@ -44,7 +50,12 @@ export default {
         this.store.callResults.series = items
         // console.log(this.store)
         this.store.isSearched = true
+
+        if (this.store.callResults.films.length === 0) {
+            store.serieNotFound = true;
+          }
       })
+      }
     }
 
   }  

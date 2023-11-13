@@ -5,4 +5,6 @@ export const store = reactive({
 	},
 	isSearched : false,
 	query : '',
+	filmNotFound : false,
+	serieNotFound : false,
 })

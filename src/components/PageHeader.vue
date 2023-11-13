@@ -10,8 +10,14 @@ export default {
     },
     methods: {
         triggerSearch() {
-            this.$emit('doSearchFilm')
-            this.$emit('doSearchSeries')
+            const controlSpace = this.store.query.trim()
+            console.log(controlSpace)
+            if (controlSpace !== '') {
+                this.$emit('doSearchFilm')
+                this.$emit('doSearchSeries')
+            } else {
+                this.store.query = ''
+            }
         }   
     }
 }
