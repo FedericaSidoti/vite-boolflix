@@ -29,7 +29,6 @@ export default {
           const items = res.data.results
           this.store.callResults.films= items
           console.log(this.store)
-          this.store.isSearched = true
         // console.log(this.store.isSearched)
           if (this.store.callResults.films.length === 0) {
             store.filmNotFound = true;
@@ -51,7 +50,7 @@ export default {
         // console.log(this.store)
         this.store.isSearched = true
 
-        if (this.store.callResults.films.length === 0) {
+        if (this.store.callResults.series.length === 0) {
             store.serieNotFound = true;
           }
       })

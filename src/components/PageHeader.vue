@@ -10,7 +10,6 @@ export default {
     },
     methods: {
         triggerSearch() {
-            store.callResults = {};
             const controlSpace = this.store.query.trim()
             console.log(controlSpace)
             if (controlSpace !== '') {
@@ -19,7 +18,10 @@ export default {
             } else {
                 this.store.query = ''
             }
-        }   
+        }, 
+        clearSearch () {
+            store.callResults = {}
+        }  
     }
 }
 </script>
@@ -31,6 +33,7 @@ export default {
     </div>
     <div class="input-wrap">
         <input 
+        @keyup.delete="clearSearch"
         type="text" 
         placeholder="Cerca..."
         v-model="store.query">
