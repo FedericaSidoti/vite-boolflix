@@ -10,7 +10,8 @@ import {store} from '../store'
                 languagesArray: [
                     'it',
                     'en',
-                    'fr'
+                    'fr',
+                    'ja'
                 ]
             }
         },
@@ -55,7 +56,7 @@ import {store} from '../store'
                     </p>
                 </li>
                 <li class="info"> 
-                    <div class="info-title lang">Lingua: 
+                    <div class="info-title lang">Lingua:  
                         <p> {{ item.original_language }}</p>
                         <div class="icon-wrap">
                             <img class="flag" v-if="languagesArray.includes(item.original_language)" :src='language'>
@@ -126,7 +127,11 @@ import {store} from '../store'
 
     .lang {
         display: flex;
-        align-items: center
+        align-items: center; 
+    }
+
+    .icon-wrap {
+        margin-left: 5px;
     }
 
 
