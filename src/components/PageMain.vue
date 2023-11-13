@@ -47,7 +47,9 @@ export default {
 
 .main-content {
     background-color: gray;
+    min-height: calc(100vh - 70px);
 }
+
 
 .section {
     padding: 20px;

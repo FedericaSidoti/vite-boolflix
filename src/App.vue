@@ -27,7 +27,7 @@ export default {
       .then(res => {
         const items = res.data.results
         this.store.callResults.films = items
-        // console.log(this.store)
+        console.log(this.store)
         this.store.isSearched = true
         // console.log(this.store.isSearched)
       })

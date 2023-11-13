@@ -40,6 +40,12 @@ export default {
     align-items: center;
     background-color: black;
     padding: 20px;
+    position: sticky;
+    right: 0;
+    left: 0;
+    top: 0; 
+    z-index: 999;
+    height: 70px; 
 }
 
 .logo-wrap {

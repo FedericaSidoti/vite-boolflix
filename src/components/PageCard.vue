@@ -6,7 +6,7 @@ import {store} from '../store'
         data() {
             return {
                 store: store,
-                src: 'https://image.tmdb.org/t/p/w342',
+                src: 'https://image.tmdb.org/t/p/w342' + this.item.poster_path,
             }
         },
         props : {
@@ -36,8 +36,9 @@ import {store} from '../store'
 
 <template>
     <div class="col-2" >
-        <div class="card front">
-            <img :src="src + item.poster_path" >
+        <div class="card">
+            <img v-if="src !== 'https://image.tmdb.org/t/p/w342null'" :src="src" >
+            <img v-else src="/img/img-not-found.png">
         </div>
         <div class="card back">
             <ul v-if="store.isSearched===true" class="infos">
@@ -70,6 +71,11 @@ import {store} from '../store'
                         <span v-else> &#128533; </span> 
                     </p>
                 </li>
+                <li class="info">
+                    <p class="info-title"> Descrizione:
+                        <span>{{ item.overview }}</span>
+                    </p>
+                </li>
             </ul>
         </div>
     </div>
@@ -77,16 +83,15 @@ import {store} from '../store'
 </template>
 
 <style lang="scss" scoped>
+
     .col-2 {
     width: calc((100% / 12) * 2); 
     padding: 5px; 
     position: relative;
+    overflow: auto;
 }
     .col-2:hover .back {
         display: inline-block;
-    }
-    .card {
-        background-color: azure;
     }
 
     .back{
@@ -94,6 +99,9 @@ import {store} from '../store'
         position: absolute;
         top: 0;
         right: 0; 
+        left: 0; 
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
     }
 
     .infos {
