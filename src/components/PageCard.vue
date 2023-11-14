@@ -66,8 +66,9 @@ import {store} from '../store'
                 </li>
                 <li class="info"> 
                     <p class="info-title">Votazione: 
-                        <span class="stars" v-if="stars !== 0" > 
-                            <span v-for="star in stars">&#10030;</span>
+                        <span v-if="stars !== 0" > 
+                            <span class="stars" v-for="star in stars">&#10030;</span>
+                            <span v-for="star in (5-stars)">&#10030;</span>
                         </span>
                         <span v-else> &#128533; </span> 
                     </p>
@@ -87,7 +88,7 @@ import {store} from '../store'
 
     .col-2 {
     width: calc((100% / 12) * 2); 
-    padding: 5px; 
+    padding: 2px; 
     position: relative;
     overflow: auto; 
 }

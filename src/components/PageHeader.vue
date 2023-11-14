@@ -33,7 +33,7 @@ export default {
     </div>
     <div class="input-wrap">
         <input 
-        @keyup.delete="clearSearch"
+        @keyup.delete="clearSearch" 
         type="text" 
         placeholder="Cerca..."
         v-model="store.query">
