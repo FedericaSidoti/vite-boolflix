@@ -69,6 +69,6 @@ export default {
 </template>
 
 <style lang="scss">
-@use './syles/general.scss'
+@use './styles/general.scss'
 
 </style>

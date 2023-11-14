@@ -20,9 +20,7 @@ import {store} from '../store'
         },
         computed : {
             language : function(){
-
                 const srcFlag = '/img/' + this.item.original_language + '.png'
-                
                 return srcFlag
             },
             stars : function(){
@@ -45,7 +43,7 @@ import {store} from '../store'
             <ul v-if="store.isSearched===true" class="infos">
                 <li class="info">
                     <p class="info-title">Titolo:
-                    <span  v-if="item.title" >{{item.title }}</span>
+                    <span  v-if="item.title" >{{ item.title }}</span>
                     <span v-else>{{ item.name }} </span>
                     </p>
                 </li>
